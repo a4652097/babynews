@@ -1,0 +1,29 @@
+$margin:0.5rem 1rem;
+
+.banner {
+  margin: 0px 12px 0px 12px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 20rem;
+}
+
+.van-grid {
+  margin-top: 1rem;
+}
+
+.van-grid-item  {
+  .van-grid-item__content {
+    padding: 0;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+  }
+  .procut_title, .price {
+    margin: $margin
+  }
+}
+
+.gird {
+  margin-left: 2rem
+}
