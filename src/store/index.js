@@ -5,9 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    name: '讲个'
+    active: 0
   },
   mutations: {
+    change_active (state, params) {
+      // 变更状态
+      state.active = params
+    }
+
   },
   actions: {
   },

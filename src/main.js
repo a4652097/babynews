@@ -6,9 +6,10 @@ import store from './store'
 import './style/index.scss'
 
 // vant组件
-import { Sidebar, SidebarItem, Card, Grid, GridItem, Button, NavBar, Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Image as VanImage } from 'vant'
+import { Tag, Col, Row, Sidebar, SidebarItem, Card, Grid, GridItem, Button, NavBar, Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Image as VanImage } from 'vant'
 
 // 使用vant组件
+Vue.use(Tag)
 Vue.use(VanImage)
 Vue.use(Search)
 Vue.use(Tabbar)
@@ -22,6 +23,8 @@ Vue.use(GridItem)
 Vue.use(Card)
 Vue.use(Sidebar)
 Vue.use(SidebarItem)
+Vue.use(Col)
+Vue.use(Row)
 Vue.use(Lazyload)
 Vue.config.productionTip = false
 

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <van-tabbar v-model="active" placeholder="true">
+    <van-tabbar v-model="active" :placeholder=true>
       <van-tabbar-item icon="home-o" @click="home">首页</van-tabbar-item>
       <van-tabbar-item icon="apps-o" @click="category">分类</van-tabbar-item>
       <van-tabbar-item icon="cart-o" @click="cart">购物车</van-tabbar-item>
@@ -14,7 +14,7 @@ export default {
   name: 'footer-nav',
   data () {
     return {
-      active: 0
+      active: this.$store.state.active
     }
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <van-grid :gutter="10" :column-num="2">
+  <van-grid :gutter="10" :column-num="2" :center=false>
     <van-grid-item v-for="product in products" :key="product.index" calss="list">
       <van-image lazy-load :src="product.image" />
       <p class="procut_title">{{product.title}}</p>

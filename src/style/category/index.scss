@@ -1,0 +1,11 @@
+.category{
+  display: flex;
+  align-items: flex-start;
+  .van-sidebar{
+    width: 12rem;
+    text-align: center;
+  }
+  .van-grid{
+    width: 100%;
+  }
+}

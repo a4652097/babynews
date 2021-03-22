@@ -1,11 +1,30 @@
 <template>
   <div>
+    <van-card
+      num="2"
+      price="2.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+    >
+      <template #tags>
+        <van-tag plain type="danger">标签</van-tag>
+        <van-tag plain type="danger">标签</van-tag>
+      </template>
+      <template #footer>
+        <van-button size="mini">按钮</van-button>
+        <van-button size="mini">按钮</van-button>
+      </template>
+    </van-card>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'index'
+  name: 'index',
+  mounted () {
+    this.$store.commit('change_active', 2)
+  }
 }
 </script>
 
