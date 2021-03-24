@@ -28,3 +28,18 @@ export const getChildCategory = (params) =>
     method: 'get',
     params
   })
+// 获取排序后的商品列表
+export const getSortProduct = (params) =>
+  request({
+    url: '/sort',
+    method: 'get',
+    params
+  })
+// 提交订单
+export function payOrder (data) {
+  return request({
+    url: '/pay_order',
+    method: 'post',
+    data
+  })
+}

@@ -1,0 +1,33 @@
+.van-submit-bar {
+  margin-bottom: 5rem
+}
+
+.van-card {
+  .van-card__header{
+    margin-left: 3rem;
+  }
+  .van-card__tag {
+    top:4rem;
+    left:-3rem;
+  }
+}
+
+.cart_list {
+  .checkbox {
+    height: 1rem;
+    .van-field {
+      top: -10rem;
+      background-color: #fafafa;
+      width: 4rem;
+    }
+  }
+  .stepper {
+    height: 1rem;
+    .van-field {
+      top: -8rem;
+      float: right;
+      background-color: #fafafa;
+      width: 13rem;
+    }
+  }
+}
