@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cart">
     <van-dropdown-menu>
       <van-dropdown-item v-model="value1" :options="option1" @change="product_type" />
       <van-dropdown-item v-model="value2" :options="option2" @change="product_sort"/>

@@ -6,9 +6,15 @@ import store from './store'
 import './style/index.scss'
 
 // vant组件
-import { Field, Stepper, CheckboxGroup, Checkbox, Form, SubmitBar, DropdownItem, DropdownMenu, List, Tag, Col, Row, Sidebar, SidebarItem, Card, Grid, GridItem, Button, NavBar, Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Image as VanImage } from 'vant'
+import { AddressEdit, Tab, Tabs, AddressList, Cell, CellGroup, Field, Stepper, CheckboxGroup, Checkbox, Form, SubmitBar, DropdownItem, DropdownMenu, List, Tag, Col, Row, Sidebar, SidebarItem, Card, Grid, GridItem, Button, NavBar, Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Image as VanImage } from 'vant'
 
 // 使用vant组件
+Vue.use(AddressEdit)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(AddressList)
+Vue.use(Cell)
+Vue.use(CellGroup)
 Vue.use(CheckboxGroup)
 Vue.use(Field)
 Vue.use(Stepper)

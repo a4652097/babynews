@@ -1,53 +1,56 @@
 <template>
-  <van-form @submit="onSubmit">
-    <van-field
-      v-model="username"
-      name="用户名"
-      label="用户名"
-      placeholder="用户名"
-      :rules="[{ required: true, message: '请填写用户名' }]"
-    />
-    <van-field
-      v-model="password"
-      type="password"
-      name="密码"
-      label="密码"
-      placeholder="密码"
-      :rules="[{ required: true, message: '请填写密码' }]"
-    />
-    <van-field name="checkboxGroup" label="复选框组" >
-      <template #input>
-        <van-checkbox-group v-model="checkboxGroup" direction="horizontal" ref="checkboxGroup">
-          <van-checkbox name="1" shape="square">复选框 1</van-checkbox>
-          <van-checkbox name="2" shape="square">复选框 2</van-checkbox>
-        </van-checkbox-group>
-      </template>
-    </van-field>
-    <van-button type="primary" @click="checkAll">全选</van-button>
-    <van-submit-bar :price="2222" button-text="提交订单" @submit="onSubmit">
-    </van-submit-bar>
-  </van-form>
+  <div class="personal">
+    <div class="head_image">
+      <van-image
+        round
+        width="8rem"
+        height="8rem"
+        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+      />
+      <p>吃蘑菇的大灰狼</p>
+    </div>
+    <van-cell-group title="">
+      <van-cell title="收货地址" is-link to="/my_address" />
+      <div class="order_type">
+        <van-cell value="所有订单" is-link :to="{ name: 'orders', params: {type: 0} }">
+          <!-- 使用 title 插槽来自定义标题 -->
+          <template #title>
+            <span class="custom-title">我的订单</span>
+          </template>
+        </van-cell>
+
+        <van-grid :border="false">
+          <van-grid-item icon="pending-payment" text="待付款" :to="{ name: 'orders', params: {type: 1} }"/>
+          <van-grid-item icon="send-gift-o" text="待发货" :to="{ name: 'orders', params: {type: 2} }"/>
+          <van-grid-item icon="logistics" text="待收货" :to="{ name: 'orders', params: {type: 3} }"/>
+          <van-grid-item icon="comment-o" text="待评价" :to="{ name: 'orders', params: {type: 4} }"/>
+        </van-grid>
+      </div>
+    </van-cell-group>
+    <van-cell-group title="关于">
+      <van-cell title="帮助反馈" is-link to="/personal/about" />
+      <van-cell title="关于我们" is-link to="/personal/about" />
+    </van-cell-group>
+    <van-button @click="logout" type="danger" block class="logout">登出</van-button>
+  </div>
+
 </template>
 
 <script>
+import { Toast } from 'vant'
 export default {
   name: 'index',
   data () {
     return {
-      username: '',
-      password: '',
-      checkbox: false,
-      checkboxGroup: []
     }
   },
   methods: {
-    checkAll () {
-      console.log('ddd', this.$refs.checkboxGroup)
-      this.$refs.checkboxGroup.toggleAll(true)
-    },
-    onSubmit (values) {
-      console.log('submit', values)
+    logout () {
+      Toast.success('登出成功')
     }
+  },
+  mounted () {
+    this.$store.commit('change_active', 3)
   }
 }
 </script>

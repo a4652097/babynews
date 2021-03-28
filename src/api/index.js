@@ -43,3 +43,27 @@ export function payOrder (data) {
     data
   })
 }
+// 我的订单
+export function orderList (params) {
+  return request({
+    url: '/orders',
+    method: 'get',
+    params
+  })
+}
+// 新增/修改收货地址
+export function addAddress (data) {
+  return request({
+    url: '/add_address',
+    method: 'post',
+    data
+  })
+}
+// 获取收货地址
+export function address (params) {
+  return request({
+    url: '/address',
+    method: 'get',
+    params
+  })
+}

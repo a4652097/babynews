@@ -1,0 +1,20 @@
+.personal {
+  background-color: $gray;
+  .logout {
+    margin-top: 5rem;
+  }
+  .head_image {
+    text-align: center;
+    margin: 1rem 0 1rem 0;
+  }
+  .order_type {
+    .van-cell {
+      position: unset;
+
+    }
+    .van-grid {
+      padding-bottom: 1rem;
+    }
+  }
+}
+

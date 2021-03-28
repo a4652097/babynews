@@ -3,7 +3,6 @@
     <van-nav-bar
       :title="$route.meta.title"
       left-text="返回"
-      right-text="按钮"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -26,7 +25,7 @@ export default {
       this.$router.back()
     },
     onClickRight () {
-      Toast('按钮')
+      Toast('设置')
     }
   }
 }

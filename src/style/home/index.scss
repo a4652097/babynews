@@ -1,4 +1,4 @@
-$margin:0.5rem 1rem;
+@import "../layout/intex";
 
 .banner {
   margin: 0px 12px 0px 12px;
@@ -11,6 +11,8 @@ $margin:0.5rem 1rem;
 
 .van-grid {
   margin-top: 1rem;
+  padding-top: 1rem;
+  background-color: $white;
 }
 
 .van-grid-item  {

@@ -1,4 +1,6 @@
+@import "../layout/intex";
 .category{
+  background-color: $white;
   display: flex;
   align-items: flex-start;
   .van-sidebar{

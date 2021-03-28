@@ -1,33 +1,38 @@
-.van-submit-bar {
-  margin-bottom: 5rem
-}
-
-.van-card {
-  .van-card__header{
-    margin-left: 3rem;
+@import "../layout/intex";
+.cart {
+  background-color: $gray;
+  .van-submit-bar {
+    margin-bottom: 5rem
   }
-  .van-card__tag {
-    top:4rem;
-    left:-3rem;
-  }
-}
-
-.cart_list {
-  .checkbox {
-    height: 1rem;
-    .van-field {
-      top: -10rem;
-      background-color: #fafafa;
-      width: 4rem;
+  .van-card {
+    background-color: $white;
+    .van-card__header{
+      margin-left: 3rem;
+    }
+    .van-card__tag {
+      top:4rem;
+      left:-3rem;
     }
   }
-  .stepper {
-    height: 1rem;
-    .van-field {
-      top: -8rem;
-      float: right;
-      background-color: #fafafa;
-      width: 13rem;
+  .cart_list {
+    .checkbox {
+      height: 1rem;
+      .van-field {
+        top: -10rem;
+        width: 4rem;
+      }
+    }
+    .stepper {
+      height: 1rem;
+      .van-field {
+        top: -8rem;
+        float: right;
+        width: 13rem;
+      }
     }
   }
 }
+
+
+
+
