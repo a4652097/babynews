@@ -33,6 +33,13 @@ export default {
   mounted () {
     this.getProductList()
   },
+  // 监听路由参数改变后重新驱动视图
+  watch: {
+    '$store.state.query': function (newFlag, oldFlag) {
+      // 需要执行的代码
+      this.getProductList()
+    }
+  },
   methods: {
     onLoad () {
       // 异步更新数据
@@ -40,10 +47,11 @@ export default {
     },
 
     getProductList () {
+      console.log('搜索关键字', this.$store.state.query)
+      const query = this.$store.state.query
       setTimeout(() => {
-        getProductList({}).then(res => {
+        getProductList({ query: query }).then(res => {
           if (res.data.success) {
-            console.log(res.data.data[0])
             this.products = this.products.concat(res.data.data)
           } else {
             console.log('错误处理')

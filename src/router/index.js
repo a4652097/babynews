@@ -67,6 +67,19 @@ const routes = [
     name: 'edit_address',
     meta: { title: '新增/修改地址' },
     component: () => import('@/views/my_address/add_address/index.vue')
+  },
+  {
+    path: '/search_list',
+    component: () => import('@/views/search_list/index.vue'),
+    meta: { title: '搜索' },
+    children:
+    [
+      {
+        path: 'product_list/:query',
+        name: 'p_list',
+        component: () => import('@/components/ProductList.vue')
+      }
+    ]
   }
 ]
 

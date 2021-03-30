@@ -1,6 +1,6 @@
 <template>
   <van-grid :gutter="10" :border="false" class="gird">
-    <van-grid-item v-for="data in datas" :key="data.index">
+    <van-grid-item v-for="data in datas" :key="data.index" :to="{ path: 'search_list', params: {type: data.query} }">
       <van-image
         round
         width="5rem"
@@ -20,19 +20,23 @@ export default {
       datas: [
         {
           url: require('../assets/images/discount.jpg'),
-          name: '折扣商品'
+          name: '折扣商品',
+          query: 'off'
         },
         {
           url: require('../assets/images/activ.jpg'),
-          name: '活动商品'
+          name: '活动商品',
+          query: 'activity'
         },
         {
           url: require('../assets/images/new.jpg'),
-          name: '商品上新'
+          name: '商品上新',
+          query: 'new'
         },
         {
           url: require('../assets/images/recharge.jpg'),
-          name: '充值中心'
+          name: '热销商品',
+          query: 'hot'
         }
       ]
     }
