@@ -7,7 +7,7 @@
       @load="onLoad"
     >
       <van-grid :gutter="10" :column-num="2" :center=false>
-        <van-grid-item v-for="product in products" :key="product.index" calss="list">
+        <van-grid-item v-for="product in products" :key="product.index" calss="list" :to="{ name: 'product_info', params: {id: product.id} }">
           <van-image lazy-load :src="product.image" />
           <p class="procut_title">{{product.title}}</p>
           <p class="price">￥{{product.price}}</p>

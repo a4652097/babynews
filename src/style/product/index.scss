@@ -1,0 +1,29 @@
+.product_info {
+  background-color: white;
+  .info {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 5rem;
+    .price {
+      font-size: 20px;
+      color: red;
+      .old_price {
+        font-size: 15px;
+        margin-left: 2rem;
+        color: #8c939d;
+        text-decoration: line-through;
+      }
+    }
+    .title {
+      font-size: 25px;
+    }
+    .description {
+      font-size: 14px;
+      color: #8c939d;
+      margin-top: 0rem;
+    }
+    .shop {
+      font-size: 1.2rem;
+    }
+  }
+}

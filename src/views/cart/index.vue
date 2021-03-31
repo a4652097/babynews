@@ -1,49 +1,47 @@
 <template>
   <div class="cart">
-    <van-dropdown-menu>
-      <van-dropdown-item v-model="value1" :options="option1" @change="product_type" />
-      <van-dropdown-item v-model="value2" :options="option2" @change="product_sort"/>
-    </van-dropdown-menu>
-      <van-checkbox-group v-model="result" ref="checkboxGroup">
-        <div v-for="product in products" :key="product.id" class="cart_list">
-          <div class="card">
-  <!--          商品卡片-->
-            <van-card
-              :price="product.price"
-              :desc="product.description"
-              :title="product.title"
-              :thumb="product.image"
-            >
-            <template #tags>
-              <van-tag plain type="danger">热卖</van-tag>
-              <van-tag plain type="danger">新品</van-tag>
-            </template>
-            <template #footer>
-              <van-button size="mini" type="info">结算</van-button>
-              <van-button size="mini" type="danger">取消</van-button>
-            </template>
-            </van-card>
-          </div>
-          <div class="stepper">
-            <!--          步进器-->
-            <van-field name="stepper" label="">
-              <template #input>
-                <van-stepper v-model="product.number" />
-              </template>
-            </van-field>
-          </div>
-          <div  class="checkbox">
-            <!--          复选框-->
-            <van-field name="checkboxGroup" label="">
-              <template #input>
-                <template>
-                  <van-checkbox :name="product.id"></van-checkbox>
-                </template>
-              </template>
-            </van-field>
-          </div>
+    <ProductFilter @sort="change_sort" @type="change_type"></ProductFilter>
+    <van-checkbox-group v-model="result" ref="checkboxGroup">
+      <div v-for="product in products" :key="product.id" class="cart_list">
+        <div class="card">
+<!--          商品卡片-->
+          <van-card
+            :price="product.price"
+            :desc="product.description"
+            :title="product.title"
+            :thumb="product.image"
+            @click-thumb="to_product(product.product_id)"
+          >
+          <template #tags>
+            <van-tag plain type="danger">热卖</van-tag>
+            <van-tag plain type="danger">新品</van-tag>
+          </template>
+          <template #footer>
+            <van-button size="mini" type="info">结算</van-button>
+            <van-button size="mini" type="danger">取消</van-button>
+          </template>
+          </van-card>
         </div>
-      </van-checkbox-group>
+        <div class="stepper">
+          <!--          步进器-->
+          <van-field name="stepper" label="">
+            <template #input>
+              <van-stepper v-model="product.number" />
+            </template>
+          </van-field>
+        </div>
+        <div  class="checkbox">
+          <!--          复选框-->
+          <van-field name="checkboxGroup" label="">
+            <template #input>
+              <template>
+                <van-checkbox :name="product.id"></van-checkbox>
+              </template>
+            </template>
+          </van-field>
+        </div>
+      </div>
+    </van-checkbox-group>
     <van-submit-bar :price="price_sum" button-text="提交订单" @submit="onSubmit">
       <van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
     </van-submit-bar>
@@ -52,30 +50,24 @@
 
 <script>
 import { getSortProduct, payOrder } from '@/api'
-
+import ProductFilter from '@/components/ProductFilter.vue'
 import { Toast } from 'vant'
 export default {
   name: 'index',
+  components: {
+    ProductFilter
+  },
   data () {
     return {
       products: [],
       result: [],
       stepper: [],
       checked: false,
-      value1: 'all',
-      value2: 'default',
-      option1: [
-        { text: '全部商品', value: 'all' },
-        { text: '新款商品', value: 'new' },
-        { text: '活动商品', value: 'activity' }
-      ],
-      option2: [
-        { text: '默认排序', value: 'default' },
-        { text: '好评排序', value: 'good' },
-        { text: '销量排序', value: 'sales' }
-      ]
+      sort: '',
+      type: ''
     }
   },
+
   computed: {
     // 计算选中商品总价
     price_sum: function () {
@@ -89,6 +81,9 @@ export default {
     }
   },
   methods: {
+    to_product (id) {
+      this.$router.push({ name: 'product_info', params: { id: id } })
+    },
     checkAll () {
       if (this.result.length === this.products.length) {
         this.$refs.checkboxGroup.toggleAll()
@@ -99,8 +94,10 @@ export default {
         })
       }
     },
-    getSortProduct () {
-      getSortProduct({}).then(res => {
+
+    // 获取我的购物车商品
+    getSortProduct (sort, type) {
+      getSortProduct({ sort, type }).then(res => {
         if (res.data.success) {
           this.products = res.data.data
         } else {
@@ -110,13 +107,17 @@ export default {
         console.log(err)
       })
     },
-    product_type () {
-      console.log(this.value1)
-      this.getSortProduct(this.value1)
+    // 改变商品排序后触发
+    change_sort (sort) {
+      console.log('sort', sort)
+      this.sort = sort
+      this.getSortProduct(this.sort, this.type)
     },
-    product_sort () {
-      console.log(this.value2)
-      this.getSortProduct(this.value2)
+    // 改变商品类型后触发
+    change_type (type) {
+      console.log('type', type)
+      this.type = type
+      this.getSortProduct(this.sort, this.type)
     },
     onSubmit (values) {
       if (this.result.length === 0) {
@@ -146,7 +147,7 @@ export default {
 
   mounted () {
     this.$store.commit('change_active', 2)
-    this.getSortProduct()
+    this.getSortProduct(this.sort, this.type)
   }
 }
 </script>

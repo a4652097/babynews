@@ -45,7 +45,5 @@ export default {
 </script>
 
 <style scoped>
-.van-grid-item .van-grid-item__content{
-  /*align-items: center;*/
-}
+
 </style>

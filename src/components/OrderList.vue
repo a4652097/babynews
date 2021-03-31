@@ -7,6 +7,7 @@
           :desc="order.description"
           :title="order.title"
           :thumb="order.image"
+          @click-thumb="to_product(order.product_id)"
         >
           <template #tags>
             <van-tag plain type="danger">标签</van-tag>
@@ -31,6 +32,9 @@ export default {
     }
   },
   methods: {
+    to_product (id) {
+      this.$router.push({ name: 'product_info', params: { id: id } })
+    },
     orderList (type) {
       orderList({ type }).then(res => {
         if (res.data.success) {

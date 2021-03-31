@@ -67,3 +67,11 @@ export function address (params) {
     params
   })
 }
+// 获取商品详情
+export function getProduct (params) {
+  return request({
+    url: '/product',
+    method: 'get',
+    params
+  })
+}

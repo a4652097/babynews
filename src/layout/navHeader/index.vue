@@ -2,6 +2,8 @@
   <header>
     <van-nav-bar
       :title="$route.meta.title"
+      :fixed=true
+      :placeholder=true
       left-text="返回"
       left-arrow
       @click-left="onClickLeft"

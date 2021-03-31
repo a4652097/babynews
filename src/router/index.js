@@ -49,6 +49,11 @@ const routes = [
       }
     ]
   },
+  // {
+  //   path: 'product_info',
+  //   name: 'product_info',
+  //   component: () => import('@/view/product/show.vue')
+  // },
   {
     path: '/orders',
     component: () => import('@/views/orders/index.vue'),
@@ -70,16 +75,15 @@ const routes = [
   },
   {
     path: '/search_list',
+    name: 'search_list',
     component: () => import('@/views/search_list/index.vue'),
-    meta: { title: '搜索' },
-    children:
-    [
-      {
-        path: 'product_list/:query',
-        name: 'p_list',
-        component: () => import('@/components/ProductList.vue')
-      }
-    ]
+    meta: { title: '搜索结果' }
+  },
+  {
+    path: '/product_info/:id',
+    name: 'product_info',
+    component: () => import('@/views/product/index.vue'),
+    meta: { title: '商品详情' }
   }
 ]
 

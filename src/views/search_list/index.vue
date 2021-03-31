@@ -14,10 +14,14 @@ export default {
   name: 'index',
   data () {
     return {
+      sort: '',
+      type: ''
     }
   },
   components: {
     ProductList, Search, navHeader
+  },
+  methods: {
   }
 }
 </script>

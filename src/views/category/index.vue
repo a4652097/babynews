@@ -6,7 +6,7 @@
       </div>
     </van-sidebar>
     <van-grid :gutter="10" icon-size="8rem" :border=false>
-      <van-grid-item v-for="category in child_categories" :key="category.id" :icon="category.image" :text="category.name"/>
+      <van-grid-item v-for="category in child_categories" :key="category.id" :icon="category.image" :text="category.name" :to="{ name: 'product_info', params: {id: category.id} }"/>
     </van-grid>
   </div>
 </template>
