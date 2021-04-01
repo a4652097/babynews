@@ -1,6 +1,5 @@
 <template>
   <div class="order">
-    <navHeader></navHeader>
     <van-tabs v-model="active">
       <van-tab title="所有订单" :to="{ name: 'orders', params: {type: 0} }"></van-tab>
       <van-tab title="待付款" :to="{ name: 'orders', params: { type: 1 }}"></van-tab>
@@ -13,16 +12,12 @@
 </template>
 
 <script>
-import navHeader from '@/layout/navHeader/index.vue'
 export default {
   name: 'index',
   data () {
     return {
       active: 0
     }
-  },
-  components: {
-    navHeader
   },
   methods: {
   },

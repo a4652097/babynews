@@ -1,6 +1,5 @@
 <template>
 <div class="product_info">
-  <navHeader></navHeader>
   <van-swipe :autoplay="3000" indicator-color="white" class="banner">
     <van-swipe-item v-for="(image, index) in product.banner" :key="index">
       <img v-lazy="image" class="banner-img"/>
@@ -26,7 +25,6 @@
 </template>
 
 <script>
-import navHeader from '@/layout/navHeader/index.vue'
 import ProductFooter from '@/layout/productFooter/index.vue'
 import { getProduct } from '@/api'
 export default {
@@ -37,7 +35,7 @@ export default {
     }
   },
   components: {
-    ProductFooter, navHeader
+    ProductFooter
   },
   methods: {
     // 获取商品详情

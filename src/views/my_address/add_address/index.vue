@@ -1,6 +1,5 @@
 <template>
 <div>
-  <navHeader></navHeader>
   <van-address-edit
     :area-list="areaList"
     show-postal
@@ -19,8 +18,7 @@
 </template>
 
 <script>
-import navHeader from '@/layout/navHeader/index.vue'
-import areaList from '@/utils/area.js'
+import areaList from '@/utils/area/index.js'
 import { Toast } from 'vant'
 import { addAddress } from '@/api'
 export default {
@@ -32,9 +30,6 @@ export default {
       data: [],
       addressInfo: {}
     }
-  },
-  components: {
-    navHeader
   },
   mounted () {
     console.log(this.$route.params.data)

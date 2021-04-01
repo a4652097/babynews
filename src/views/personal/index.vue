@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import { Toast } from 'vant'
+import { Notify } from 'vant'
+import util from '@/utils/index.js'
 export default {
   name: 'index',
   data () {
@@ -46,7 +47,9 @@ export default {
   },
   methods: {
     logout () {
-      Toast.success('登出成功')
+      util.saveData.removeToken()
+      this.$router.push({ name: 'home' })
+      Notify({ type: 'success', message: '登出成功' })
     }
   },
   mounted () {
