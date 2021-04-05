@@ -52,6 +52,7 @@
 import { getSortProduct, payOrder } from '@/api'
 import ProductFilter from '@/components/ProductFilter.vue'
 import { Toast } from 'vant'
+import debounce from '@/utils/index.js'
 export default {
   name: 'index',
   components: {
@@ -67,7 +68,6 @@ export default {
       type: ''
     }
   },
-
   computed: {
     // 计算选中商品总价
     price_sum: function () {
@@ -123,24 +123,24 @@ export default {
       if (this.result.length === 0) {
         Toast.fail('请选中需要提交的商品')
       } else {
-        console.log('复选', this.result.length)
-        console.log('数量', this.products)
-        var data = []
-        // 遍历data赋值
-        this.result.map(item => {
-          let a = {}
-          a.id = item
-          a.number = this.products.filter(product => product.id === item)[0].number
-          a = JSON.stringify(a)
-          data.push(a)
-        })
-        payOrder({
-          data: data
-        }).then(response => {
-          console.log(response)
-        }).catch(error => {
-          console.log(error)
-        })
+        debounce.debounce(() => {
+          var data = []
+          // 遍历data赋值
+          this.result.map(item => {
+            let a = {}
+            a.id = item
+            a.number = this.products.filter(product => product.id === item)[0].number
+            a = JSON.stringify(a)
+            data.push(a)
+          })
+          payOrder({
+            data: data
+          }).then(response => {
+            console.log(response)
+          }).catch(error => {
+            console.log(error)
+          })
+        }, 1000)
       }
     }
   },

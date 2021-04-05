@@ -2,6 +2,7 @@
   <div>
     <van-list
       v-model="loading"
+      :immediate-check = false
       :finished="finished"
       finished-text="没有更多了"
       @load="onLoad"
@@ -26,8 +27,11 @@ export default {
   data () {
     return {
       products: [],
+      page: 1,
+      per: 4,
       loading: false,
-      finished: false
+      finished: false,
+      keyword: ''
     }
   },
   mounted () {
@@ -37,35 +41,37 @@ export default {
   watch: {
     '$store.state.query': function (newFlag, oldFlag) {
       // 需要执行的代码
+      this.page = 1
       this.getProductList()
     }
   },
   methods: {
     onLoad () {
       // 异步更新数据
+      this.page += 1
       this.getProductList()
     },
 
     getProductList () {
       console.log('搜索关键字', this.$store.state.query)
+      console.log('页数', this.page)
       const query = this.$store.state.query
-      setTimeout(() => {
-        getProductList({ query: query }).then(res => {
-          if (res.data.success) {
-            this.products = this.products.concat(res.data.data)
-          } else {
-            console.log('错误处理')
+      const page = this.page
+      getProductList({ query: query, page: page, per: this.per }).then(res => {
+        if (res.data.success) {
+          this.products = this.products.concat(res.data.data)
+          //   // 加载状态结束
+          this.loading = false
+        } else {
+          // 数据全部加载完成
+          if (this.products === null) {
+            this.finished = true
           }
-        }).catch(err => {
-          console.log(err)
-        })
-        // 加载状态结束
-        this.loading = false
-        // 数据全部加载完成
-        if (this.products.length >= 20) {
-          this.finished = true
+          console.log('错误处理')
         }
-      }, 1000)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
