@@ -10,6 +10,9 @@
     yarn serve
 // 3.项目打包
     yarn build
+// 4. 线上地址
+    https://my-shop-kappa.vercel.app/#/home
+    使用浏览器的手机模式使用或者用手机打开网站
 ```
 
 ```js
