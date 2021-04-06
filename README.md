@@ -26,7 +26,7 @@
     less // 样式
     js-cookie // 存储账户信息
     axios // 接口请求
-    rap2 // 接口模拟
+    Easy Mock // 接口模拟
     vue-router// 路由操作
     vuex // 状态管理
 ```
